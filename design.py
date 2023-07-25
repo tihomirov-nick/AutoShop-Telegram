@@ -9,7 +9,7 @@ start_photo = "https://edit.org/photos/img/blog/mbp-template-banner-online-store
 
 # Стартовый текст
 start_text = """
-Добро пожаловать @ {user_name}! Спасибо что пользуетесь нашим Магазином
+Добро пожаловать @{user_name}! Спасибо что пользуетесь нашим Магазином
 Главное меню:
 """
 
