@@ -8,7 +8,7 @@ from tgbot.services.sqlite import get_user
 from design import no_cats, available_cats, no_products, current_cat, current_pod_cat, open_pos_text, here_count_products, \
 choose_buy_product, no_balance, no_product, no_num_count, choose_buy_products, gen_products, yes_buy_items, otmena_buy, edit_prod
 from tgbot.keyboards.inline_user import back_to_user_menu, open_products, open_positions, open_pod_cat_positions, \
-pos_buy_inl, choose_buy_items
+pos_buy_inl, choose_buy_items, refill_inl
 from tgbot.services.sqlite import get_all_categories, get_positions, get_category, get_pod_category, get_position, \
 get_items, buy_item, update_user, add_purchase
 from tgbot.data.loader import dp, bot
@@ -128,7 +128,7 @@ async def pos_buy(call: CallbackQuery, state: FSMContext):
             await call.message.delete()
             await call.message.answer(choose_buy_product.format(name=pos['name']), reply_markup=choose_buy_items(pos_id, 1))
         else:
-            await call.answer(no_balance)
+            await call.message.answer(no_balance, reply_marlup=refill_inl())
     else:
         await call.answer(no_product, True)
 

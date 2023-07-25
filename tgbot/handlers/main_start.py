@@ -94,7 +94,7 @@ async def main_start(message: Message, state: FSMContext):
     user = get_user(id=message.from_user.id)
     kb = user_menu(message.from_user.id)
 
-    video_path = "D:\\PYTHON\\AutoShop-for-Telegram-main\\IMG_1209.MOV"
+    video_path = "IMG_1209.MOV"
     with open(video_path, "rb") as video_file:
         video = InputFile(video_file)
         await bot.send_video(chat_id=message.from_user.id, video=video,
