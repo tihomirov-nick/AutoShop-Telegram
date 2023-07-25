@@ -150,17 +150,18 @@ async def ref_systemm(call: CallbackQuery, state: FSMContext):
 # Просмотр истории покупок
 @dp.callback_query_handler(text="last_purchases", state="*")
 async def user_history(call: CallbackQuery, state: FSMContext):
-    purchasess = last_purchases(call.from_user.id, 10)
+    purchasess = last_purchases(call.from_user.id)
+    # purchasess = last_purchases(call.from_user.id, 10)
 
     if len(purchasess) >= 1:
-        await call.answer(last_10_purc)
+        # await call.answer(last_10_purc)
         with suppress(MessageCantBeDeleted):
             await call.message.delete()
             for purchases in purchasess:
                 link_items = purchases['item']
-            msg = last_purc_text.format(receipt=purchases['receipt'], name=purchases['position_name'], count=purchases['count'], price=purchases['price'], date=purchases['date'], link_items=link_items)
+                msg = last_purc_text.format(receipt=purchases['receipt'], name=purchases['position_name'], count=purchases['count'], price=purchases['price'], date=purchases['date'], link_items=link_items)
 
-            await call.message.answer(msg)
+                await call.message.answer(msg)
 
         msg = open_profile(call)
         await call.message.answer(msg, reply_markup=profile_inl())

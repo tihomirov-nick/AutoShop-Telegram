@@ -114,10 +114,11 @@ def all_purchases():
         return con.execute(sql).fetchall()
 
 # Последние N покупок
-def last_purchases(user_id, count):
+def last_purchases(user_id):
     with sqlite3.connect(path_db) as con:
         con.row_factory = dict_factory
-        sql = f"SELECT * FROM purchases WHERE user_id = ? ORDER BY increment DESC LIMIT {count}"
+        # sql = f"SELECT * FROM purchases WHERE user_id = ? ORDER BY increment DESC LIMIT {count}"
+        sql = f"SELECT * FROM purchases WHERE user_id = ?"
         return con.execute(sql, [user_id]).fetchall()
 
 
