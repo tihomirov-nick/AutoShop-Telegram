@@ -326,6 +326,7 @@ def products_edits():
     kb.append(InlineKeyboardButton("🗑️ | ВСЕ Под-Категории", callback_data=f"del_all_pod_cats"))
 
     kb.append(InlineKeyboardButton("➕ | Позицию", callback_data=f"add_pos"))
+    kb.append(InlineKeyboardButton("➕ | Позицию .RAR", callback_data=f"add_pos_rar"))
     kb.append(InlineKeyboardButton("⚙️ | Позицию", callback_data=f"edit_pos"))
     kb.append(InlineKeyboardButton("🗑️ | ВСЕ Позиции", callback_data=f"del_all_poss"))
 
@@ -336,9 +337,10 @@ def products_edits():
 
     keyboard.add(kb[0], kb[1], kb[2])
     keyboard.add(kb[3], kb[4], kb[5])
-    keyboard.add(kb[6], kb[7], kb[8])
-    keyboard.add(kb[9], kb[10])
-    keyboard.add(kb[11])
+    keyboard.add(kb[6], kb[8], kb[9])
+    keyboard.add(kb[7])
+    keyboard.add(kb[10], kb[11])
+    keyboard.add(kb[12])
 
     return keyboard
 

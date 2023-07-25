@@ -274,7 +274,7 @@ async def dels_all_cats_choose(call: CallbackQuery, state: FSMContext):
 async def add_pos(call: CallbackQuery, state: FSMContext):
     await state.finish()
 
-    await call.message.answer(f"<b>❗ Выберите категорию для создания позиции</b>", reply_markup=open_cats_for_add_pos())
+    await call.message.edit_text(f"<b>❗ Выберите категорию для создания позиции</b>", reply_markup=open_cats_for_add_pos())
 
 @dp.callback_query_handler(text_startswith="add_pos_cat:", state="*")
 async def add_posss(call: CallbackQuery, state: FSMContext):
@@ -283,10 +283,10 @@ async def add_posss(call: CallbackQuery, state: FSMContext):
     cat_id = call.data.split(":")[1]
 
     if len(get_pod_categories(cat_id)) != 0:
-        await call.message.answer(f"<b>❗ Выберите под-категорию (Или категорию) для создания позиции</b>",
+        await call.message.edit_text(f"<b>❗ Выберите под-категорию (Или категорию) для создания позиции</b>",
                                 reply_markup=open_pod_cats_for_add_pos(cat_id))
     else:
-        await call.message.answer(f"<b>❗ Введите название для позиции</b>")
+        await call.message.edit_text(f"<b>❗ Введите название для позиции</b>")
         await state.set_state("here_name_add_pos")
         await state.update_data(cache_cat_id_for_add_pos=cat_id)
         await state.update_data(cache_pod_cat_id_for_add_pos=None)
@@ -297,7 +297,7 @@ async def add_possss(call: CallbackQuery, state: FSMContext):
 
     cat_id = call.data.split(":")[1]
 
-    await call.message.answer(f"<b>❗ Введите название для позиции</b>")
+    await call.message.edit_text(f"<b>❗ Введите название для позиции</b>")
     await state.set_state("here_name_add_pos")
     await state.update_data(cache_cat_id_for_add_pos=cat_id)
     await state.update_data(cache_pod_cat_id_for_add_pos=None)
@@ -309,7 +309,7 @@ async def add_poss(call: CallbackQuery, state: FSMContext):
     pod_cat_id = call.data.split(":")[1]
     cat_id = call.data.split(":")[2]
 
-    await call.message.answer(f"<b>❗ Введите название для позиции</b>")
+    await call.message.edit_text(f"<b>❗ Введите название для позиции</b>")
     await state.set_state("here_name_add_pos")
     await state.update_data(cache_pod_cat_id_for_add_pos=pod_cat_id)
     await state.update_data(cache_cat_id_for_add_pos=cat_id)
