@@ -23,7 +23,7 @@ async def on_startup(dp: Dispatcher):
     
     print(colorama.Fore.GREEN + "=======================")
     print(colorama.Fore.RED + "Bot Was Started")
-    # print(colorama.Fore.LIGHTBLUE_EX + "Telegram Developer/Coder: @ArtyomRoyal")
+    print(colorama.Fore.LIGHTBLUE_EX + "Telegram Developer/Coder: @tihmir_nick")
     print(colorama.Fore.RESET)
 
 
