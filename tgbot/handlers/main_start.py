@@ -76,11 +76,12 @@ async def sub_prov(call: CallbackQuery, state: FSMContext):
     if call.message.chat.type == 'private':
         user = get_user(id=call.from_user.id)
         kb = user_menu(call.from_user.id)
-        if start_photo == "":
-            await call.message.answer(start_text.format(user_name=user['user_name']), reply_markup=kb)
-        else:
-            await bot.send_photo(chat_id=call.from_user.id, photo=start_photo,
-                                caption=start_text.format(user_name=user['user_name']), reply_markup=kb)
+
+        video_path = "IMG_1209.MOV"
+        with open(video_path, "rb") as video_file:
+            video = InputFile(video_file)
+            await bot.send_video(chat_id=call.from_user.id, video=video,
+                             caption=start_text.format(user_name=user['user_name']), reply_markup=kb)
 
 #####################################################################################
 #####################################################################################
@@ -208,11 +209,13 @@ async def again_start(call: CallbackQuery, state: FSMContext):
 
     user = get_user(id=call.from_user.id)
     kb = user_menu(call.from_user.id)
-    if start_photo == "":
-        await call.message.edit_text(start_text.format(user_name=user['user_name']), reply_markup=kb)
-    else:
+    video_path = "IMG_1209.MOV"
+    with open(video_path, "rb") as video_file:
+        video = InputFile(video_file)
         await call.message.delete()
-        await bot.send_photo(chat_id=call.from_user.id, photo=start_photo, caption=start_text.format(user_name=user['user_name']), reply_markup=kb)
+        await bot.send_video(chat_id=call.from_user.id, video=video,
+                                    caption=start_text.format(user_name=user['user_name']), reply_markup=kb)
+
 
 @dp.callback_query_handler(text="close_text_mail", state='*')
 async def close_text_mails(call: CallbackQuery, state: FSMContext):
