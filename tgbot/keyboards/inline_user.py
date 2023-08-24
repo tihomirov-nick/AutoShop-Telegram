@@ -32,10 +32,11 @@ def user_menu(user_id):
     keyboard.add(kb[2])
     keyboard.add(kb[3])
     keyboard.add(kb[4], kb[5])
-    keyboard.add(kb[6], kb[7])
 
     if user_id in get_admins():
-        keyboard.add(kb[8])
+        keyboard.add(kb[6], kb[7])
+    else:
+        keyboard.add(kb[6])
 
     return keyboard
 
